@@ -1,4 +1,4 @@
-const convert = require('../lib/convert');
+import convert from '../lib/convert.js';
 
 describe('Test convert method', () => {
 	it('Text', () => {

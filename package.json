@@ -2,9 +2,10 @@
 	"name": "telegramify-markdown",
 	"version": "1.0.0",
 	"description": "Convert markdown into Telegram-specific markdown",
+	"type": "module",
 	"main": "index.js",
 	"scripts": {
-		"test": "npx jest --coverage",
+		"test": "NODE_OPTIONS=--experimental-vm-modules npx jest --coverage",
 		"lint": "eslint",
 		"semantic-release": "semantic-release",
 		"prepare": "husky install",
