@@ -308,6 +308,17 @@ foo = 'bar'
 			expect(convert(markdown, 'escape')).toBe(tgMarkdown);
 		});
 
+		it('should escape table with parentheses', () => {
+			const markdown = `| Column |
+| - |
+| (text) |`;
+			const tgMarkdown = `\\| Column \\|
+\\| \\-\\-\\-\\-\\-\\- \\|
+\\| \\(text\\) \\|
+`;
+			expect(convert(markdown, 'escape')).toBe(tgMarkdown);
+		});
+
 		it('should escape thematic break', () => {
 			const markdown = '---';
 			const tgMarkdown = '\\-\\-\\-\n';
