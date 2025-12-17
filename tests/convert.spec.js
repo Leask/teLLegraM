@@ -211,7 +211,7 @@ describe('Test convert method', () => {
 
 	it('Code block with language', () => {
 		const markdown = '```javascript\ncode block\n```';
-		const tgMarkdown = '```\ncode block\n```\n';
+		const tgMarkdown = '```javascript\ncode block\n```\n';
 		expect(convert(markdown)).toBe(tgMarkdown);
 	});
 
@@ -267,7 +267,7 @@ foo = 'bar'
 \`\`\`\`
 
 		`;
-		const tgMarkdown = `\`\`\`
+		const tgMarkdown = `\`\`\`markdown
 
 \\\`\\\`\\\`python
 foo = 'bar'
