@@ -23,6 +23,7 @@
 		"url": "git+https://github.com/leask/tellegram.git"
 	},
 	"keywords": [
+		"tellegram",
 		"telegram",
 		"markdown",
 		"telegramify",
