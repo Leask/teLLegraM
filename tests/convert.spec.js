@@ -312,10 +312,12 @@ foo = 'bar'
 			const markdown = `| Column |
 | - |
 | (text) |`;
-			const tgMarkdown = `\\| Column \\|
-\\| \\-\\-\\-\\-\\-\\- \\|
-\\| \\(text\\) \\|
-`;
+			const tgMarkdown = [
+				'\\| Column   \\|',
+				'\\| ' + '\\-'.repeat(8) + ' \\|',
+				'\\| \\(text\\) \\|',
+				''
+			].join('\n');
 			expect(convert(markdown, 'escape')).toBe(tgMarkdown);
 		});
 
