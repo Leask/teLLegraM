@@ -20,7 +20,7 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/skoropadas/telegramify-markdown.git"
+		"url": "git+https://github.com/leask/tellegram.git"
 	},
 	"keywords": [
 		"telegram",
@@ -31,12 +31,12 @@
 		"unified"
 	],
 	"types": "types/index.d.ts",
-	"author": "Skoropad Aleksandr <alex@skoropad.dev>",
+	"author": "Leask Wong",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/skoropadas/telegramify-markdown/issues"
+		"url": "https://github.com/leask/tellegram/issues"
 	},
-	"homepage": "https://github.com/skoropadas/telegramify-markdown#readme",
+	"homepage": "https://github.com/leask/tellegram#readme",
 	"dependencies": {
 		"mdast-util-gfm-table": "^0.1.6",
 		"mdast-util-to-markdown": "^0.6.2",
