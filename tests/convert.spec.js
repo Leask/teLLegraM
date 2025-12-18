@@ -21,7 +21,7 @@ describe('Test convert method', () => {
 
 	it('Thematic break', () => {
 		const markdown = '---';
-		const tgMarkdown = '---\n';
+		const tgMarkdown = '\\-\\-\\-\n';
 		expect(convert(markdown)).toBe(tgMarkdown);
 	});
 

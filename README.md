@@ -48,9 +48,9 @@ And simple text with \+ some \- symbols\.
 
 You can also add unsupported tags strategy as a second argument, which can be one of the following:
 
-- `escape` - escape unsupported symbols for unsupported tags
+- `escape` - escape unsupported symbols for unsupported tags (default)
 - `remove` - remove unsupported tags
-- `keep` - ignore unsupported tags (default)
+- `keep` - ignore unsupported tags
 
 ```js
 const teLLegraM = require('teLLegraM');
