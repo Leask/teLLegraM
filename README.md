@@ -1,23 +1,21 @@
-# Telegramify-Markdown
+# teLLegraM
 
 [![Build](https://img.shields.io/github/actions/workflow/status/skoropadas/telegramify-markdown/release.yml?branch=master)](https://github.com/skoropadas/telegramify-markdown/actions)
 [![codecov](https://codecov.io/gh/skoropadas/telegramify-markdown/branch/master/graph/badge.svg?token=LxCmgGNUHl)](https://codecov.io/gh/skoropadas/telegramify-markdown)
 ![License](https://img.shields.io/github/license/skoropadas/telegramify-markdown)
 
-Telegramify-Markdown is a Markdown
-to [Telegram-specific-markdown](https://core.telegram.org/bots/api#formatting-options) converter, based
-on [Unified](https://github.com/unifiedjs/unified) and [Remark](https://github.com/remarkjs/remark/).
+teLLegraM is a library designed to format LLM (Large Language Model) generated text into [Telegram-specific-markdown (MarkdownV2)](https://core.telegram.org/bots/api#formatting-options), based on [Unified](https://github.com/unifiedjs/unified) and [Remark](https://github.com/remarkjs/remark/). It ensures that complex markdown from AI responses is perfectly interpreted by Telegram clients.
 
 ## Install
 
 ```bash
-npm install telegramify-markdown
+npm install teLLegraM
 ```
 
 ## Usage
 
 ```js
-const telegramifyMarkdown = require('telegramify-markdown');
+const teLLegraM = require('teLLegraM');
 const markdown = `
 # Header
 ## Subheader
@@ -31,7 +29,7 @@ const markdown = `
 And simple text with + some - symbols.
 `;
 
-telegramifyMarkdown(markdown);
+teLLegraM(markdown);
 /*
  *Header*
  *Subheader*
@@ -55,7 +53,7 @@ You can also add unsupported tags strategy as a second argument, which can be on
 - `keep` - ignore unsupported tags (default)
 
 ```js
-const telegramifyMarkdown = require('telegramify-markdown');
+const teLLegraM = require('teLLegraM');
 const markdown = `
 # Header
 
@@ -64,7 +62,7 @@ const markdown = `
 <div>Text in div</div>
 `;
 
-telegramifyMarkdown(markdown, 'escape');
+teLLegraM(markdown, 'escape');
 /*
 *Header*
 
@@ -73,7 +71,7 @@ telegramifyMarkdown(markdown, 'escape');
 <div\>Text in div</div\>
 */
 
-telegramifyMarkdown(markdown, 'remove');
+teLLegraM(markdown, 'remove');
 /*
 *Header*
  */

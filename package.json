@@ -1,7 +1,7 @@
 {
-	"name": "telegramify-markdown",
+	"name": "teLLegraM",
 	"version": "1.0.0",
-	"description": "Convert markdown into Telegram-specific markdown",
+	"description": "Convert LLM-generated markdown into Telegram-specific markdown (MarkdownV2)",
 	"type": "module",
 	"main": "index.js",
 	"scripts": {
