@@ -1,5 +1,5 @@
 {
-	"name": "teLLegraM",
+	"name": "tellegram",
 	"version": "1.0.0",
 	"description": "Convert LLM-generated markdown into Telegram-specific markdown (MarkdownV2)",
 	"type": "module",

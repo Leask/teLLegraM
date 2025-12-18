@@ -9,13 +9,13 @@ teLLegraM is a library designed to format LLM (Large Language Model) generated t
 ## Install
 
 ```bash
-npm install teLLegraM
+npm install tellegram
 ```
 
 ## Usage
 
 ```js
-const teLLegraM = require('teLLegraM');
+const teLLegraM = require('tellegram');
 const markdown = `
 # Header
 ## Subheader
