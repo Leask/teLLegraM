@@ -1,71 +1,71 @@
 {
-	"name": "tellegram",
-	"version": "1.0.0",
-	"description": "Convert LLM-generated markdown into Telegram-specific markdown (MarkdownV2)",
-	"type": "module",
-	"main": "index.js",
-	"scripts": {
-		"test": "NODE_OPTIONS='--experimental-vm-modules --no-deprecation' npx jest --coverage --verbose",
-		"lint": "eslint",
-		"semantic-release": "semantic-release",
-		"prepare": "husky install",
-		"codecov": "codecov"
-	},
-	"files": [
-		"README.md",
-		"LICENSE",
-		"index.js",
-		"lib",
-		"types"
-	],
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/leask/tellegram.git"
-	},
-	"keywords": [
-		"tellegram",
-		"telegram",
-		"markdown",
-		"telegramify",
-		"parser",
-		"remark",
-		"unified"
-	],
-	"types": "types/index.d.ts",
-	"author": "Leask Wong",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/leask/tellegram/issues"
-	},
-	"homepage": "https://github.com/leask/tellegram#readme",
-	"dependencies": {
-		"mdast-util-gfm-table": "^0.1.6",
-		"mdast-util-to-markdown": "^0.6.2",
-		"remark-gfm": "^1.0.0",
-		"remark-parse": "^9.0.0",
-		"remark-remove-comments": "^0.2.0",
-		"remark-stringify": "^9.0.1",
-		"unified": "^9.0.0",
-		"unist-util-remove": "^2.0.1",
-		"unist-util-visit": "^2.0.3"
-	},
-	"devDependencies": {
-		"@commitlint/cli": "^12.1.1",
-		"@commitlint/config-conventional": "^12.1.1",
-		"codecov": "^3.8.3",
-		"eslint": "^7.24.0",
-		"husky": "^6.0.0",
-		"jest": "^30.2.0",
-		"lint-staged": "^10.5.4",
-		"prettier": "2.2.1",
-		"semantic-release": "^17.4.2"
-	},
-	"lint-staged": {
-		"*.{js,json,md}": [
-			"prettier --write",
-			"git add"
-		],
-		"*.{css,scss,less}": "stylelint --fix",
-		"*.js": "eslint --cache --fix"
-	}
+    "name": "tellegram",
+    "version": "1.0.0",
+    "description": "Convert LLM-generated markdown into Telegram-specific markdown (MarkdownV2)",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "test": "NODE_OPTIONS='--experimental-vm-modules --no-deprecation' npx jest --coverage --verbose",
+        "lint": "eslint",
+        "semantic-release": "semantic-release",
+        "prepare": "husky install",
+        "codecov": "codecov"
+    },
+    "files": [
+        "README.md",
+        "LICENSE",
+        "index.js",
+        "lib",
+        "types"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/leask/tellegram.git"
+    },
+    "keywords": [
+        "tellegram",
+        "telegram",
+        "markdown",
+        "telegramify",
+        "parser",
+        "remark",
+        "unified"
+    ],
+    "types": "types/index.d.ts",
+    "author": "Leask Wong",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/leask/tellegram/issues"
+    },
+    "homepage": "https://github.com/leask/tellegram#readme",
+    "dependencies": {
+        "mdast-util-gfm-table": "^0.1.6",
+        "mdast-util-to-markdown": "^0.6.2",
+        "remark-gfm": "^1.0.0",
+        "remark-parse": "^9.0.0",
+        "remark-remove-comments": "^0.2.0",
+        "remark-stringify": "^9.0.1",
+        "unified": "^9.0.0",
+        "unist-util-remove": "^2.0.1",
+        "unist-util-visit": "^2.0.3"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^12.1.1",
+        "@commitlint/config-conventional": "^12.1.1",
+        "codecov": "^3.8.3",
+        "eslint": "^7.24.0",
+        "husky": "^6.0.0",
+        "jest": "^30.2.0",
+        "lint-staged": "^10.5.4",
+        "prettier": "2.2.1",
+        "semantic-release": "^17.4.2"
+    },
+    "lint-staged": {
+        "*.{js,json,md}": [
+            "prettier --write",
+            "git add"
+        ],
+        "*.{css,scss,less}": "stylelint --fix",
+        "*.js": "eslint --cache --fix"
+    }
 }
