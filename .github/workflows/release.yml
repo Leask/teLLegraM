@@ -4,8 +4,9 @@ on:
     push:
         branches:
             - master
-            - beta
-            - '*.x'
+
+permissions:
+    contents: write
 
 jobs:
     lint:
@@ -18,7 +19,7 @@ jobs:
         needs: [lint, tests]
         steps:
             - name: Checkout
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
               with:
                   fetch-depth: 0
 
@@ -26,13 +27,26 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   cache: npm
-                  node-version: 16
+                  node-version: 18
 
             - name: Install Dependencies
               run: npm ci
 
-            - name: Release
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-              run: npx semantic-release
+            - name: Bump Version
+              id: bump_version
+              run: |
+                  git config --global user.name "github-actions[bot]"
+                  git config --global user.email "github-actions[bot]@users.noreply.github.com"
+                  VERSION=$(npm version patch -m "chore(release): %s [skip ci]")
+                  echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+            - name: Push Changes
+              run: |
+                  git push
+                  git push --tags
+
+            - name: Create Release
+              uses: softprops/action-gh-release@v1
+              with:
+                  tag_name: ${{ steps.bump_version.outputs.version }}
+                  generate_release_notes: true
