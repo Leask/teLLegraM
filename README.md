@@ -6,6 +6,18 @@
 
 teLLegraM is a library designed to format LLM (Large Language Model) generated text into [Telegram-specific-markdown (MarkdownV2)](https://core.telegram.org/bots/api#formatting-options), based on [Unified](https://github.com/unifiedjs/unified) and [Remark](https://github.com/remarkjs/remark/). It ensures that complex markdown from AI responses is perfectly interpreted by Telegram clients.
 
+## Acknowledgements
+
+This project is based on [telegramify-markdown](https://github.com/skoropadas/telegramify-markdown) but has been evolved to specifically address the needs of LLM-generated content.
+
+## Why teLLegraM?
+
+While the original library provided a solid foundation, teLLegraM introduces several key optimizations for the "LLM to Telegram" workflow:
+
+1.  **LLM-Specific Optimizations**: Tailored handling of common artifacts found in AI responses, ensuring cleaner output.
+2.  **Lossless Pagination**: Telegram has strict message length limits. teLLegraM includes a smart pagination feature that splits long text into multiple messages *without* breaking MarkdownV2 syntax. It ensures bold, italic, or code blocks are correctly closed in one message and reopened in the next, preventing "unclosed entity" errors.
+3.  **Strict MarkdownV2 Compliance**: Enhanced escaping rules to handle edge cases often produced by generative models.
+
 ## Install
 
 ```bash
@@ -14,8 +26,13 @@ npm install tellegram
 
 ## Usage
 
+### Basic Conversion
+
 ```js
-const teLLegraM = require('tellegram');
+import tellegram from 'tellegram';
+// OR
+// import { convert } from 'tellegram';
+
 const markdown = `
 # Header
 ## Subheader
@@ -29,7 +46,8 @@ const markdown = `
 And simple text with + some - symbols.
 `;
 
-teLLegraM(markdown);
+const result = tellegram(markdown);
+console.log(result);
 /*
  *Header*
  *Subheader*
@@ -42,6 +60,24 @@ teLLegraM(markdown);
 
 And simple text with \+ some \- symbols\.
 */
+```
+
+### Pagination (Handling Long Messages)
+
+When dealing with verbose LLM outputs, use the `paginate` function to safely split text into chunks that respect Telegram's limits (4096 characters) while preserving formatting context.
+
+```js
+import { paginate } from 'tellegram';
+
+const longLlmOutput = `... extremely long text with **markdown** ...`;
+
+// Split into an array of strings, each safe to send
+const messages = paginate(longLlmOutput);
+
+for (const msg of messages) {
+    // Send each part sequentially
+    await bot.sendMessage(chatId, msg, { parse_mode: 'MarkdownV2' });
+}
 ```
 
 ## Possible options
