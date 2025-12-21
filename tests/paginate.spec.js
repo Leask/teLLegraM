@@ -1,7 +1,11 @@
-import { paginate } from '../index.js';
-// We need to import MESSAGE_LENGTH_LIMIT to test against it.
-// Since it is not exported from index.js, we import it from the internal file.
-import { MESSAGE_LENGTH_LIMIT } from '../lib/paginate.js';
+import { fileURLToPath } from 'url';
+import { paginate } from '../index.mjs';
+import fs from 'fs';
+import path from 'path';
+
+const MESSAGE_LENGTH_LIMIT = 4096;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 describe('Test paginate method', () => {
     it('should return an array', () => {
@@ -27,11 +31,7 @@ describe('Test paginate method', () => {
         expect(result.length).toBeGreaterThan(1);
 
         result.forEach(page => {
-
-            // Telegram's hard limit is 4096.
-
-            expect(page.length).toBeLessThanOrEqual(4096);
-
+            expect(page.length).toBeLessThanOrEqual(MESSAGE_LENGTH_LIMIT);
         });
     });
 
@@ -43,10 +43,7 @@ describe('Test paginate method', () => {
         const result = paginate(text);
         expect(result.length).toBeGreaterThan(0);
         result.forEach(page => {
-            // Telegram's hard limit is 4096.
-            // The internal MESSAGE_LENGTH_LIMIT (3809) is a soft limit for redundancy.
-            // The actual output (e.g. 3831) is valid as long as it's under 4096.
-            expect(page.length).toBeLessThanOrEqual(4096);
+            expect(page.length).toBeLessThanOrEqual(MESSAGE_LENGTH_LIMIT);
         });
     });
 
@@ -68,5 +65,18 @@ describe('Test paginate method', () => {
         expect(combined).toContain('Line 1');
         expect(combined).toContain('Line 2');
         expect(combined).toContain('Line 3');
+    });
+
+    it('should paginate content from test.txt correctly', () => {
+        const filePath = path.join(__dirname, 'test.jsonl');
+        const text = JSON.parse(fs.readFileSync(filePath, 'utf8').split('\n')[0]);
+        const result = paginate(text);
+
+        expect(Array.isArray(result)).toBe(true);
+        expect(result.length).toBeGreaterThan(1);
+
+        result.forEach((page, index) => {
+            expect(page.length).toBeLessThanOrEqual(MESSAGE_LENGTH_LIMIT);
+        });
     });
 });

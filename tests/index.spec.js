@@ -1,4 +1,4 @@
-import convertDefault, { convert, paginate } from '../index.js';
+import convertDefault, { convert, paginate } from '../index.mjs';
 
 describe('Test index exports', () => {
     it('should export convert as default', () => {

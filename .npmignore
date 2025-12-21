@@ -1,0 +1,22 @@
+# Tests
+tests/
+jasmine.json
+coverage/
+
+# GitHub
+.github/
+
+# Development configs
+.eslintrc.js
+.editorconfig
+prettier.config.js
+.husky/
+
+# System and IDE
+.DS_Store
+.history/
+.vscode/
+
+# Build artifacts
+dist/
+tmp/

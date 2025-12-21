@@ -1,4 +1,4 @@
-import convert from '../lib/convert.js';
+import convert from '../lib/convert.mjs';
 
 describe('Test convert method', () => {
     it('Text', () => {
