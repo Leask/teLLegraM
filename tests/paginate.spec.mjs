@@ -70,7 +70,7 @@ describe('Test paginate method', () => {
         const filePath = path.join(__dirname, 'test.jsonl');
         const text = JSON.parse(fs.readFileSync(filePath, 'utf8').split('\n')[0]);
         const result = paginate(text);
-
+        // console.log(result);
         expect(Array.isArray(result)).toBe(true);
         expect(result.length).toBeGreaterThan(1);
 
