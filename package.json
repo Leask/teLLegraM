@@ -6,7 +6,7 @@
     "main": "index.mjs",
     "scripts": {
         "test": "NODE_OPTIONS='--experimental-vm-modules --no-deprecation' npx jest --coverage --verbose",
-        "lint": "eslint",
+        "lint": "eslint . --ext .js,.mjs",
         "semantic-release": "semantic-release",
         "prepare": "husky install",
         "codecov": "codecov"
@@ -61,11 +61,11 @@
         "semantic-release": "^17.4.2"
     },
     "lint-staged": {
-        "*.{js,json,md}": [
+        "*.{js,mjs,json,md}": [
             "prettier --write",
             "git add"
         ],
         "*.{css,scss,less}": "stylelint --fix",
-        "*.js": "eslint --cache --fix"
+        "*.{js,mjs}": "eslint --cache --fix"
     }
 }

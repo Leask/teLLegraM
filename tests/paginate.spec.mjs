@@ -50,8 +50,7 @@ describe('Test paginate method', () => {
     it('should preserve content across pages', () => {
         // Using a sequence of numbers to verify order and completeness is hard due to formatting/splitting.
         // We will trust the length check primarily.
-        const part1 = 'Part 1 content. ';
-        const part2 = 'Part 2 content.';
+
         // Make part1 long enough to force a split if we can, or just force it via small custom size if supported.
         // But we can't change code. The code supports options.size.
 
@@ -75,7 +74,7 @@ describe('Test paginate method', () => {
         expect(Array.isArray(result)).toBe(true);
         expect(result.length).toBeGreaterThan(1);
 
-        result.forEach((page, index) => {
+        result.forEach((page) => {
             expect(page.length).toBeLessThanOrEqual(MESSAGE_LENGTH_LIMIT);
         });
     });
