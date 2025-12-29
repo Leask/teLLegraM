@@ -29,9 +29,7 @@ npm install tellegram
 ### Basic Conversion
 
 ```js
-import tellegram from 'tellegram';
-// OR
-// import { convert } from 'tellegram';
+import { convert } from 'tellegram';
 
 const markdown = `
 # Header
@@ -46,7 +44,7 @@ const markdown = `
 And simple text with + some - symbols.
 `;
 
-const result = tellegram(markdown);
+const result = convert(markdown);
 console.log(result);
 /*
  *Header*
@@ -89,7 +87,7 @@ You can also add unsupported tags strategy as a second argument, which can be on
 - `keep` - ignore unsupported tags
 
 ```js
-const teLLegraM = require('teLLegraM');
+import { convert } from 'tellegram';
 const markdown = `
 # Header
 
@@ -98,7 +96,7 @@ const markdown = `
 <div>Text in div</div>
 `;
 
-teLLegraM(markdown, 'escape');
+convert(markdown, 'escape');
 /*
 *Header*
 
@@ -107,7 +105,7 @@ teLLegraM(markdown, 'escape');
 <div\>Text in div</div\>
 */
 
-teLLegraM(markdown, 'remove');
+convert(markdown, 'remove');
 /*
 *Header*
  */
