@@ -4,7 +4,7 @@
 [![codecov](https://codecov.io/gh/leask/tellegram/branch/master/graph/badge.svg?token=LxCmgGNUHl)](https://codecov.io/gh/leask/tellegram)
 ![License](https://img.shields.io/github/license/leask/tellegram)
 
-teLLegraM is a library designed to format LLM (Large Language Model) generated text into [Telegram-specific-markdown (MarkdownV2)](https://core.telegram.org/bots/api#formatting-options), based on [Unified](https://github.com/unifiedjs/unified) and [Remark](https://github.com/remarkjs/remark/). It ensures that complex markdown from AI responses is perfectly interpreted by Telegram clients.
+teLLegraM is a library designed to format LLM (Large Language Model) generated text into [Telegram-specific-markdown (MarkdownV2)](https://core.telegram.org/bots/api#formatting-options), based on [Unified](https://github.com/unifiedjs/unified) and [Remark](https://github.com/remarkjs/remark/). It ensures that complex markdown from AI responses is perfectly interpreted by Telegram clients. teLLegraM also supports a syntax-aware and lossless Markdown pagination.
 
 ## Acknowledgements
 
