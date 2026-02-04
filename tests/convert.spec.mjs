@@ -197,6 +197,12 @@ describe('Test convert method', () => {
         expect(convert(markdown)).toBe(tgMarkdown);
     });
 
+    it('Inline code with backtick content', () => {
+        const markdown = 'use `` ` `` symbol';
+        const tgMarkdown = 'use \\` symbol';
+        expect(convert(markdown)).toBe(tgMarkdown);
+    });
+
     it('Code block', () => {
         const markdown = '```\ncode block\n```';
         const tgMarkdown = '```\ncode block\n```';
