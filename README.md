@@ -144,10 +144,15 @@ convert(markdown, 'escape');
 */
 ```
 
-If you want the previous behavior (table treated as unsupported), use:
+If you want the previous behavior (table treated as unsupported), use
+`table: 'unsupported'` with the strategy you need:
 
 ```js
-convert(markdown, 'remove', { table: 'unsupported' }); // => ''
+convert(markdown, 'escape', { table: 'unsupported' });
+// => table is kept as escaped Markdown table text
+
+convert(markdown, 'remove', { table: 'unsupported' });
+// => ''
 ```
 
 [MIT Licence](LICENSE)
