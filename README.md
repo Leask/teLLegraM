@@ -119,8 +119,9 @@ convert(markdown, 'remove');
 ### Convert tables to list
 
 Telegram does not support Markdown tables. By default, teLLegraM converts a
-table into a vertical hierarchical list. In this mode, placeholder `-` is
-escaped to stay safe for Telegram MarkdownV2.
+table into a vertical hierarchical list. In this mode, the first column is
+rendered as a title-like line, and following fields are rendered as escaped
+`-` list lines to stay safe for Telegram MarkdownV2.
 
 ```js
 import { convert } from 'tellegram';
@@ -134,13 +135,13 @@ const markdown = `
 
 convert(markdown, 'escape');
 /*
-• Name: Alice
-◦ Role: Admin
-◦ Score: 95
+*Name:* Alice
+\- Role: Admin
+\- Score: 95
 
-• Name: Bob
-◦ Role: User
-◦ Score: 88
+*Name:* Bob
+\- Role: User
+\- Score: 88
 */
 ```
 
