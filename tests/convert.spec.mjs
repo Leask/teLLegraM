@@ -203,6 +203,12 @@ describe('Test convert method', () => {
         expect(convert(markdown)).toBe(tgMarkdown);
     });
 
+    it('Inline code with newline content', () => {
+        const markdown = 'keep `line 1\nline 2` safe';
+        const tgMarkdown = 'keep line 1\nline 2 safe';
+        expect(convert(markdown)).toBe(tgMarkdown);
+    });
+
     it('Code block', () => {
         const markdown = '```\ncode block\n```';
         const tgMarkdown = '```\ncode block\n```';
@@ -218,6 +224,12 @@ describe('Test convert method', () => {
     it('Code block with language', () => {
         const markdown = '```javascript\ncode block\n```';
         const tgMarkdown = '```javascript\ncode block\n```';
+        expect(convert(markdown)).toBe(tgMarkdown);
+    });
+
+    it('Code block with unsupported language tokens', () => {
+        const markdown = '```py$thon\ncode block\n```';
+        const tgMarkdown = '```\ncode block\n```';
         expect(convert(markdown)).toBe(tgMarkdown);
     });
 
