@@ -278,6 +278,119 @@ foo = 'bar'
         expect(convert(markdown)).toBe(tgMarkdown);
     })
 
+    describe('table list conversion', () => {
+        it('should convert table to a vertical list by default', () => {
+            const markdown = `| Name | Role | Score |
+| - | - | - |
+| Alice | Admin | 95 |
+| Bob | User | 88 |`;
+            const tgMarkdown = [
+                '\\- Name: Alice',
+                '  \\- Role: Admin',
+                '  \\- Score: 95',
+                '',
+                '\\- Name: Bob',
+                '  \\- Role: User',
+                '  \\- Score: 88',
+            ].join('\n');
+
+            expect(convert(markdown, 'escape')).toBe(tgMarkdown);
+        });
+
+        it('should convert table to list by default even with remove strategy', () => {
+            const markdown = `| Name | Role |
+| - | - |
+| Alice | Admin |`;
+            const tgMarkdown = [
+                '\\- Name: Alice',
+                '  \\- Role: Admin',
+            ].join('\n');
+
+            expect(convert(markdown, 'remove')).toBe(tgMarkdown);
+        });
+
+        it('should convert table to list when table option is set to list', () => {
+            const markdown = `| Name | Role |
+| - | - |
+| Alice | Admin |`;
+            const tgMarkdown = [
+                '\\- Name: Alice',
+                '  \\- Role: Admin',
+            ].join('\n');
+
+            expect(convert(markdown, 'escape', { table: 'list' })).toBe(tgMarkdown);
+        });
+
+        it('should escape empty cell placeholder', () => {
+            const markdown = `| Name | Role |
+| - | - |
+| Alice | |`;
+            const tgMarkdown = [
+                '\\- Name: Alice',
+                '  \\- Role: \\-',
+            ].join('\n');
+
+            expect(convert(markdown, 'escape')).toBe(tgMarkdown);
+        });
+
+        it('should escape markdownv2 symbols in headers and values', () => {
+            const markdown = `| Metric+Name | Value(raw) |
+| - | - |
+| delta-1 | (ok)! |`;
+            const tgMarkdown = [
+                '\\- Metric\\+Name: delta\\-1',
+                '  \\- Value\\(raw\\): \\(ok\\)\\!',
+            ].join('\n');
+
+            expect(convert(markdown, 'escape')).toBe(tgMarkdown);
+        });
+
+        it('should fill missing columns with escaped placeholder', () => {
+            const markdown = `| Name | Role | Score |
+| - | - | - |
+| Alice | Admin |`;
+            const tgMarkdown = [
+                '\\- Name: Alice',
+                '  \\- Role: Admin',
+                '  \\- Score: \\-',
+            ].join('\n');
+
+            expect(convert(markdown, 'escape')).toBe(tgMarkdown);
+        });
+
+        it('should create fallback header for extra cells', () => {
+            const markdown = `| Name |
+| - |
+| Alice | Admin |`;
+            const tgMarkdown = [
+                '\\- Name: Alice',
+                '  \\- \\-: Admin',
+            ].join('\n');
+
+            expect(convert(markdown, 'escape')).toBe(tgMarkdown);
+        });
+
+        it('should handle markdown in table cells', () => {
+            const markdown = `| Name | Link |
+| - | - |
+| **Alice** | [Profile](http://example.com/user?id=1) |`;
+            const tgMarkdown = [
+                '\\- Name: *Alice*',
+                '  \\- Link: [Profile](http://example.com/user?id=1)',
+            ].join('\n');
+
+            expect(convert(markdown, 'escape')).toBe(tgMarkdown);
+        });
+
+        it('should return empty output for table without data rows', () => {
+            const markdown = `| Name | Role |
+| - | - |`;
+            const tgMarkdown = '';
+
+            expect(convert(markdown, 'escape')).toBe(tgMarkdown);
+        });
+    });
+
     describe('escape unsupported tags', () => {
         it('should escape blockquote', () => {
             const markdown = '> test';
@@ -303,7 +416,7 @@ foo = 'bar'
 \\| e \\| f  \\|    \\|     \\|   \\|
 \\| g \\| h  \\|  i \\|  j  \\| k \\|`;
 
-            expect(convert(markdown, 'escape')).toBe(tgMarkdown);
+            expect(convert(markdown, 'escape', { table: 'unsupported' })).toBe(tgMarkdown);
         });
 
         it('should escape table with parentheses', () => {
@@ -315,7 +428,7 @@ foo = 'bar'
                 '\\| ' + '\\-'.repeat(8) + ' \\|',
                 '\\| \\(text\\) \\|'
             ].join('\n');
-            expect(convert(markdown, 'escape')).toBe(tgMarkdown);
+            expect(convert(markdown, 'escape', { table: 'unsupported' })).toBe(tgMarkdown);
         });
 
         it('should escape thematic break', () => {
@@ -348,7 +461,7 @@ foo = 'bar'
 | g | h | i | j | k |`;
             const tgMarkdown = '';
 
-            expect(convert(markdown, 'remove')).toBe(tgMarkdown);
+            expect(convert(markdown, 'remove', { table: 'unsupported' })).toBe(tgMarkdown);
         });
 
         it('should remove thematic break', () => {

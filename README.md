@@ -86,6 +86,11 @@ You can also add unsupported tags strategy as a second argument, which can be on
 - `remove` - remove unsupported tags
 - `keep` - ignore unsupported tags
 
+`convert` also accepts a third argument for feature options:
+
+- `table: 'list'` - convert GFM tables into MarkdownV2-safe hierarchical lists (default)
+- `table: 'unsupported'` - treat tables as unsupported and apply the second-argument strategy
+
 ```js
 import { convert } from 'tellegram';
 const markdown = `
@@ -109,6 +114,40 @@ convert(markdown, 'remove');
 /*
 *Header*
  */
+```
+
+### Convert tables to list
+
+Telegram does not support Markdown tables. By default, teLLegraM converts a
+table into a vertical hierarchical list. In this mode, list markers and
+placeholder `-` are escaped to stay safe for Telegram MarkdownV2.
+
+```js
+import { convert } from 'tellegram';
+
+const markdown = `
+| Name  | Role  | Score |
+| ----- | ----- | ----- |
+| Alice | Admin | 95    |
+| Bob   | User  | 88    |
+`;
+
+convert(markdown, 'escape');
+/*
+\- Name: Alice
+  \- Role: Admin
+  \- Score: 95
+
+\- Name: Bob
+  \- Role: User
+  \- Score: 88
+*/
+```
+
+If you want the previous behavior (table treated as unsupported), use:
+
+```js
+convert(markdown, 'remove', { table: 'unsupported' }); // => ''
 ```
 
 [MIT Licence](LICENSE)
