@@ -285,11 +285,11 @@ foo = 'bar'
 | Alice | Admin | 95 |
 | Bob | User | 88 |`;
             const tgMarkdown = [
-                '*Name:* Alice',
+                '1\\. Name: Alice',
                 '\\- Role: Admin',
                 '\\- Score: 95',
                 '',
-                '*Name:* Bob',
+                '2\\. Name: Bob',
                 '\\- Role: User',
                 '\\- Score: 88',
             ].join('\n');
@@ -302,7 +302,7 @@ foo = 'bar'
 | - | - |
 | Alice | Admin |`;
             const tgMarkdown = [
-                '*Name:* Alice',
+                '1\\. Name: Alice',
                 '\\- Role: Admin',
             ].join('\n');
 
@@ -314,7 +314,7 @@ foo = 'bar'
 | - | - |
 | Alice | Admin |`;
             const tgMarkdown = [
-                '*Name:* Alice',
+                '1\\. Name: Alice',
                 '\\- Role: Admin',
             ].join('\n');
 
@@ -326,7 +326,7 @@ foo = 'bar'
 | - | - |
 | Alice | |`;
             const tgMarkdown = [
-                '*Name:* Alice',
+                '1\\. Name: Alice',
                 '\\- Role: \\-',
             ].join('\n');
 
@@ -338,7 +338,7 @@ foo = 'bar'
 | - | - |
 | delta-1 | (ok)! |`;
             const tgMarkdown = [
-                '*Metric\\+Name:* delta\\-1',
+                '1\\. Metric\\+Name: delta\\-1',
                 '\\- Value\\(raw\\): \\(ok\\)\\!',
             ].join('\n');
 
@@ -350,7 +350,7 @@ foo = 'bar'
 | - | - | - |
 | Alice | Admin |`;
             const tgMarkdown = [
-                '*Name:* Alice',
+                '1\\. Name: Alice',
                 '\\- Role: Admin',
                 '\\- Score: \\-',
             ].join('\n');
@@ -363,7 +363,7 @@ foo = 'bar'
 | - |
 | Alice | Admin |`;
             const tgMarkdown = [
-                '*Name:* Alice',
+                '1\\. Name: Alice',
                 '\\- \\-: Admin',
             ].join('\n');
 
@@ -375,7 +375,7 @@ foo = 'bar'
 | - | - |
 | **Alice** | [Profile](http://example.com/user?id=1) |`;
             const tgMarkdown = [
-                '*Name:* *Alice*',
+                '1\\. Name: *Alice*',
                 '\\- Link: [Profile](http://example.com/user?id=1)',
             ].join('\n');
 
