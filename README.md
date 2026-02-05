@@ -135,13 +135,13 @@ const markdown = `
 
 convert(markdown, 'escape');
 /*
-1\. Name: Alice
-\- Role: Admin
-\- Score: 95
+1. Name: Alice
+- Role: Admin
+- Score: 95
 
-2\. Name: Bob
-\- Role: User
-\- Score: 88
+2. Name: Bob
+- Role: User
+- Score: 88
 */
 ```
 
