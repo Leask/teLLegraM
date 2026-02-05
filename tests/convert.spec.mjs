@@ -382,7 +382,7 @@ foo = 'bar'
 | Alice | Admin |`;
             const tgMarkdown = [
                 '1\\. Name: Alice',
-                '\\- \\-: Admin',
+                '\\- \\- : Admin',
             ].join('\n');
 
             expect(convert(markdown, 'escape')).toBe(tgMarkdown);
