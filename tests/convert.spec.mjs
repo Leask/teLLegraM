@@ -304,12 +304,12 @@ foo = 'bar'
 | Bob | User | 88 |`;
             const tgMarkdown = [
                 '1\\. Name: Alice',
-                '- Role: Admin',
-                '- Score: 95',
+                '\\- Role: Admin',
+                '\\- Score: 95',
                 '',
                 '2\\. Name: Bob',
-                '- Role: User',
-                '- Score: 88',
+                '\\- Role: User',
+                '\\- Score: 88',
             ].join('\n');
 
             expect(convert(markdown, 'escape')).toBe(tgMarkdown);
@@ -321,7 +321,7 @@ foo = 'bar'
 | Alice | Admin |`;
             const tgMarkdown = [
                 '1\\. Name: Alice',
-                '- Role: Admin',
+                '\\- Role: Admin',
             ].join('\n');
 
             expect(convert(markdown, 'remove')).toBe(tgMarkdown);
@@ -333,7 +333,7 @@ foo = 'bar'
 | Alice | Admin |`;
             const tgMarkdown = [
                 '1\\. Name: Alice',
-                '- Role: Admin',
+                '\\- Role: Admin',
             ].join('\n');
 
             expect(convert(markdown, 'escape', { table: 'list' })).toBe(tgMarkdown);
@@ -345,7 +345,7 @@ foo = 'bar'
 | Alice | |`;
             const tgMarkdown = [
                 '1\\. Name: Alice',
-                '- Role: \\-',
+                '\\- Role: \\-',
             ].join('\n');
 
             expect(convert(markdown, 'escape')).toBe(tgMarkdown);
@@ -357,7 +357,7 @@ foo = 'bar'
 | delta-1 | (ok)! |`;
             const tgMarkdown = [
                 '1\\. Metric\\+Name: delta\\-1',
-                '- Value\\(raw\\): \\(ok\\)\\!',
+                '\\- Value\\(raw\\): \\(ok\\)\\!',
             ].join('\n');
 
             expect(convert(markdown, 'escape')).toBe(tgMarkdown);
@@ -369,8 +369,8 @@ foo = 'bar'
 | Alice | Admin |`;
             const tgMarkdown = [
                 '1\\. Name: Alice',
-                '- Role: Admin',
-                '- Score: \\-',
+                '\\- Role: Admin',
+                '\\- Score: \\-',
             ].join('\n');
 
             expect(convert(markdown, 'escape')).toBe(tgMarkdown);
@@ -382,7 +382,7 @@ foo = 'bar'
 | Alice | Admin |`;
             const tgMarkdown = [
                 '1\\. Name: Alice',
-                '- \\-: Admin',
+                '\\- \\-: Admin',
             ].join('\n');
 
             expect(convert(markdown, 'escape')).toBe(tgMarkdown);
@@ -394,7 +394,7 @@ foo = 'bar'
 | **Alice** | [Profile](http://example.com/user?id=1) |`;
             const tgMarkdown = [
                 '1\\. Name: *Alice*',
-                '- Link: [Profile](http://example.com/user?id=1)',
+                '\\- Link: [Profile](http://example.com/user?id=1)',
             ].join('\n');
 
             expect(convert(markdown, 'escape')).toBe(tgMarkdown);
