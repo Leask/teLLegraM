@@ -156,4 +156,13 @@ convert(markdown, 'remove', { table: 'unsupported' });
 // => ''
 ```
 
+## Publishing
+
+Pushes to `master` run lint and tests, bump the patch version, and publish
+through npm Trusted Publishing (GitHub Actions OIDC), without an `NPM_TOKEN`.
+The npm publisher for `tellegram` must match owner `Leask`, repository
+`teLLegraM`, workflow filename `release.yml`, and environment `npm`, with
+direct `npm publish` allowed. The GitHub environment only permits `master`.
+Keep these settings aligned if the repository or workflow is renamed.
+
 [MIT Licence](LICENSE)
